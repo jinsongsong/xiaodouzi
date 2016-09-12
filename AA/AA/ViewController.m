@@ -13,7 +13,6 @@
 {
     NSArray *data01Array;
     PNLineChart * lineChart;
-    
 }
 @end
 
@@ -23,6 +22,8 @@
     [super viewDidLoad];
     //data01Array = @[@60.1, @160.1, @126.4, @262.2, @186.2];
     [self aLineChart:data01Array];
+    
+    
     
     //[self aBarChart];
     //[self aPieChart];
@@ -294,7 +295,7 @@
 }
 - (void)didUnselectPieItem
 {
-    
+    //你好！！！
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
