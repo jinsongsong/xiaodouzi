@@ -13,6 +13,7 @@
 {
     NSArray *data01Array;
     PNLineChart * lineChart;
+    
 }
 @end
 
@@ -295,7 +296,7 @@
 }
 - (void)didUnselectPieItem
 {
-    //你好！！！
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
