@@ -25,8 +25,8 @@
     
     
     
-    [self aBarChart];
-    [self aPieChart];
+    //[self aBarChart];
+    //[self aPieChart];
     UIButton *btn=[[UIButton alloc]initWithFrame:CGRectMake(100, 100, 100, 100)];
     btn.backgroundColor=[UIColor orangeColor];
     [btn addTarget:self action:@selector(fa) forControlEvents:UIControlEventTouchUpInside];
