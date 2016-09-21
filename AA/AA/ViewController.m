@@ -8,7 +8,8 @@
 
 #import "ViewController.h"
 //#define ARC4RANDOM_MAX 0x100000000
-
+#import "MBProgressHUD.h"
+#import "AFNetworking.h"
 @interface ViewController ()<PNChartDelegate>
 {
     NSArray *data01Array;
