@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0730"
+   LastUpgradeVersion = "0800"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F3078D9A1D59B12200C8137E"
-               BuildableName = "AA.app"
-               BlueprintName = "AA"
+               BlueprintIdentifier = "F33BFD4B1DA8E8410075CB51"
+               BuildableName = "BB.app"
+               BlueprintName = "BB"
                ReferencedContainer = "container:AA.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,33 +28,13 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F3078DB31D59B12200C8137E"
-               BuildableName = "AATests.xctest"
-               BlueprintName = "AATests"
-               ReferencedContainer = "container:AA.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F3078DBE1D59B12200C8137E"
-               BuildableName = "AAUITests.xctest"
-               BlueprintName = "AAUITests"
-               ReferencedContainer = "container:AA.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F3078D9A1D59B12200C8137E"
-            BuildableName = "AA.app"
-            BlueprintName = "AA"
+            BlueprintIdentifier = "F33BFD4B1DA8E8410075CB51"
+            BuildableName = "BB.app"
+            BlueprintName = "BB"
             ReferencedContainer = "container:AA.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -75,9 +55,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F3078D9A1D59B12200C8137E"
-            BuildableName = "AA.app"
-            BlueprintName = "AA"
+            BlueprintIdentifier = "F33BFD4B1DA8E8410075CB51"
+            BuildableName = "BB.app"
+            BlueprintName = "BB"
             ReferencedContainer = "container:AA.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -101,9 +81,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F3078D9A1D59B12200C8137E"
-            BuildableName = "AA.app"
-            BlueprintName = "AA"
+            BlueprintIdentifier = "F33BFD4B1DA8E8410075CB51"
+            BuildableName = "BB.app"
+            BlueprintName = "BB"
             ReferencedContainer = "container:AA.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

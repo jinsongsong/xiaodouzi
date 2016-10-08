@@ -22,8 +22,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     //data01Array = @[@60.1, @160.1, @126.4, @262.2, @186.2];
-    [self aLineChart:data01Array];
     
+#if KKAA
+    [self aLineChart:data01Array];
+#elif KKBB
+    [self aPieChart];
+#elif KKCC
+    [self aBarChart];
+#endif
     
     
     //[self aBarChart];
