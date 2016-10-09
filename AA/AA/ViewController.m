@@ -27,10 +27,9 @@
     [self aLineChart:data01Array];
 #elif KKBB
     [self aPieChart];
-#elif KKCC
+#else
     [self aBarChart];
 #endif
-    
     
     //[self aBarChart];
     //[self aPieChart];
@@ -71,7 +70,38 @@
     
     [self.barChart setXLabels:@[@"Jan 1",@"Jan 2",@"Jan 3",@"Jan 4",@"Jan 5",@"Jan 6",@"Jan 7"]];
     [self.barChart updateChartData:@[@(arc4random() % 30),@(arc4random() % 30),@(arc4random() % 30),@(arc4random() % 30),@(arc4random() % 30),@(arc4random() % 30),@(arc4random() % 30)]];
- 
+    
+    CABasicAnimation *animateScale = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    animateScale.fromValue = [NSNumber numberWithFloat:0.f];
+    animateScale.toValue = [NSNumber numberWithFloat:1.0f];
+    
+    CABasicAnimation *animateMove = [CABasicAnimation animationWithKeyPath:@"position"];
+//    animateMove.fromValue = [NSValue valueWithCGPoint:CGPointMake(self.view.bounds.size.width/2, self.view.bounds.size.height/2)];
+//    animateMove.toValue = [NSValue valueWithCGPoint:CGPointMake(0, 0)];
+    
+    CABasicAnimation *animateAlpha = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    animateAlpha.fromValue = [NSNumber numberWithFloat:0.f];
+    animateAlpha.toValue = [NSNumber numberWithFloat:1.0f];
+    
+//    CAKeyframeAnimation *frameAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+//    UIBezierPath *path=[UIBezierPath bezierPath];
+//    [path moveToPoint:CGPointMake(0, 0)];
+//    [path addLineToPoint:CGPointMake(10 ,10)];
+//    [path addLineToPoint:CGPointMake(100,100)];
+//    frameAnimation.path=path.CGPath;
+    
+    
+    CAAnimationGroup *aniGroup = [CAAnimationGroup animation];
+    aniGroup.duration = 1.f;
+    aniGroup.repeatCount = 1;
+    aniGroup.animations = [NSArray arrayWithObjects:animateScale,animateMove,animateAlpha, nil];
+    aniGroup.removedOnCompletion = YES;
+    
+    [self.view.layer addAnimation:aniGroup forKey:nil];
+    
+    
+
+
     //[self.barChart strokeChart];
     
     
