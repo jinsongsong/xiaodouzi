@@ -15,8 +15,8 @@
 #import "UIImageView+WebCache.h"
 #endif
 
-
-@interface ViewController ()<PNChartDelegate>
+#define HHAA 5
+@interface ViewController ()<PNChartDelegate,CAAnimationDelegate>
 {
     NSArray *data01Array;
     PNLineChart * lineChart;
@@ -85,16 +85,16 @@
     [self.barChart updateChartData:@[@(arc4random() % 30),@(arc4random() % 30),@(arc4random() % 30),@(arc4random() % 30),@(arc4random() % 30),@(arc4random() % 30),@(arc4random() % 30)]];
     
     CABasicAnimation *animateScale = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
-    animateScale.fromValue = [NSNumber numberWithFloat:0.f];
-    animateScale.toValue = [NSNumber numberWithFloat:1.0f];
+    animateScale.fromValue = [NSNumber numberWithFloat:1.f];
+    animateScale.toValue = [NSNumber numberWithFloat:0.0f];
     
     CABasicAnimation *animateMove = [CABasicAnimation animationWithKeyPath:@"position"];
 //    animateMove.fromValue = [NSValue valueWithCGPoint:CGPointMake(self.view.bounds.size.width/2, self.view.bounds.size.height/2)];
 //    animateMove.toValue = [NSValue valueWithCGPoint:CGPointMake(0, 0)];
     
     CABasicAnimation *animateAlpha = [CABasicAnimation animationWithKeyPath:@"opacity"];
-    animateAlpha.fromValue = [NSNumber numberWithFloat:0.f];
-    animateAlpha.toValue = [NSNumber numberWithFloat:1.0f];
+    animateAlpha.fromValue = [NSNumber numberWithFloat:1.f];
+    animateAlpha.toValue = [NSNumber numberWithFloat:0.0f];
     
 //    CAKeyframeAnimation *frameAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
 //    UIBezierPath *path=[UIBezierPath bezierPath];
@@ -105,14 +105,21 @@
     
     
     CAAnimationGroup *aniGroup = [CAAnimationGroup animation];
-    aniGroup.duration = 1.f;
+    aniGroup.duration = 2.f;
     aniGroup.repeatCount = 1;
+    aniGroup.autoreverses=YES;  //动画 复原
+    aniGroup.delegate=self;
     aniGroup.animations = [NSArray arrayWithObjects:animateScale,animateMove,animateAlpha, nil];
     aniGroup.removedOnCompletion = YES;
     
     [self.view.layer addAnimation:aniGroup forKey:nil];
     
-    
+    for (NSInteger i=0; i<10; i++) {
+        if (i==5) {
+            break;
+        }
+    }
+
 
 
     //[self.barChart strokeChart];
@@ -181,6 +188,12 @@
 //
 //    [lineChart updateChartData:@[data01, data02]];
 
+}
+- (void)animationDidStart:(CAAnimation *)anim{
+    NSLog(@"开始");
+}
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
+    NSLog(@"结束");
 }
 -(void)aLineChart:(NSArray*)arr
 {
