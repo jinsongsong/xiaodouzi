@@ -8,27 +8,31 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>2</integer>
 		</dict>
 		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>3</integer>
 		</dict>
 		<key>Pods-AA.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>4</integer>
+		</dict>
+		<key>SDWebImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>14D3B74F9598D3B00E58EB21EA36ADF9</key>
+		<key>13A8DA09036BD796CBFCEB8B3B384257</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>467504A32A3CF75B058F26CE0CB0E173</key>
 		<dict>
 			<key>primary</key>
 			<true/>

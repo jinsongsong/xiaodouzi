@@ -8,8 +8,14 @@
 
 #import "ViewController.h"
 //#define ARC4RANDOM_MAX 0x100000000
+
+#if KKAA
 #import "MBProgressHUD.h"
 #import "AFNetworking.h"
+#import "UIImageView+WebCache.h"
+#endif
+
+
 @interface ViewController ()<PNChartDelegate>
 {
     NSArray *data01Array;
@@ -29,10 +35,17 @@
     [self aPieChart];
 #else
     [self aBarChart];
+#define adad
+#endif
+ 
+#ifndef adad
+    NSLog(@"1234556788jgfndbndfkfh wio woig");
 #endif
     
-    //[self aBarChart];
-    //[self aPieChart];
+#ifdef adad
+    NSLog(@"123");
+#endif
+    
     UIButton *btn=[[UIButton alloc]initWithFrame:CGRectMake(100, 100, 100, 100)];
     btn.backgroundColor=[UIColor orangeColor];
     [btn addTarget:self action:@selector(fa) forControlEvents:UIControlEventTouchUpInside];
