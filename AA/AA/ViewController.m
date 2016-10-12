@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 //#define ARC4RANDOM_MAX 0x100000000
+#import <objc/runtime.h>
 
 #if KKAA
 #import "MBProgressHUD.h"
@@ -24,6 +25,15 @@
 @end
 
 @implementation ViewController
++(void)load{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+
+        Method viewDidLoad = class_getInstanceMethod(self, @selector(viewDidLoad));
+        Method viewDidLoaded = class_getInstanceMethod(self, @selector(bbb));
+        method_exchangeImplementations(viewDidLoad, viewDidLoaded);
+    });
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -48,8 +58,25 @@
     
     UIButton *btn=[[UIButton alloc]initWithFrame:CGRectMake(100, 100, 100, 100)];
     btn.backgroundColor=[UIColor orangeColor];
-    [btn addTarget:self action:@selector(fa) forControlEvents:UIControlEventTouchUpInside];
+    [btn addTarget:self action:@selector(fa:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
+    
+    
+//    Method m1=class_getInstanceMethod([self class], @selector(viewDidLoad));
+//    Method m2=class_getInstanceMethod([self class], @selector(bbb));
+//    
+//    method_exchangeImplementations(m1, m2);
+    
+    
+    
+    
+}
+-(void)aaa{
+    NSLog(@"123456");
+}
+-(void)bbb{
+    NSLog(@"abcdefg");
+    [self bbb];
 }
 -(void)aBarChart
 {
@@ -78,47 +105,70 @@
     [barChart strokeChart];
     
 }
+-(void)makeScale:(UIView*)scaleView delegate:(id)delegate scale:(CGFloat)scale duration:(CFTimeInterval)duration
+{
+    
+    scaleView.layer.transform = CATransform3DIdentity;
+    
+    CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
+    CATransform3D tr0 = CATransform3DMakeScale(1, 1, 1);
+    CATransform3D tr1 = CATransform3DMakeScale(scale, scale, 1);
+    CATransform3D tr2 = CATransform3DMakeScale(1, 1, 1);
+    NSArray *frameValues = [NSArray arrayWithObjects:
+                            [NSValue valueWithCATransform3D:tr0],
+                            [NSValue valueWithCATransform3D:tr1],
+                            [NSValue valueWithCATransform3D:tr2],
+                            nil];
+    [animation setValues:frameValues];
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+    animation.duration = duration;
+    animation.delegate = delegate;
+    animation.repeatCount=3;
+    [scaleView.layer addAnimation:animation forKey:@"ShakedAnimation"];
+}
 
--(void)fa{
+-(void)fa:(UIButton*)btn{
     
-    [self.barChart setXLabels:@[@"Jan 1",@"Jan 2",@"Jan 3",@"Jan 4",@"Jan 5",@"Jan 6",@"Jan 7"]];
-    [self.barChart updateChartData:@[@(arc4random() % 30),@(arc4random() % 30),@(arc4random() % 30),@(arc4random() % 30),@(arc4random() % 30),@(arc4random() % 30),@(arc4random() % 30)]];
+    [self makeScale:btn delegate:nil scale:1.5 duration:.3];
     
-    CABasicAnimation *animateScale = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
-    animateScale.fromValue = [NSNumber numberWithFloat:1.f];
-    animateScale.toValue = [NSNumber numberWithFloat:0.0f];
-    
-    CABasicAnimation *animateMove = [CABasicAnimation animationWithKeyPath:@"position"];
-//    animateMove.fromValue = [NSValue valueWithCGPoint:CGPointMake(self.view.bounds.size.width/2, self.view.bounds.size.height/2)];
-//    animateMove.toValue = [NSValue valueWithCGPoint:CGPointMake(0, 0)];
-    
-    CABasicAnimation *animateAlpha = [CABasicAnimation animationWithKeyPath:@"opacity"];
-    animateAlpha.fromValue = [NSNumber numberWithFloat:1.f];
-    animateAlpha.toValue = [NSNumber numberWithFloat:0.0f];
-    
-//    CAKeyframeAnimation *frameAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
-//    UIBezierPath *path=[UIBezierPath bezierPath];
-//    [path moveToPoint:CGPointMake(0, 0)];
-//    [path addLineToPoint:CGPointMake(10 ,10)];
-//    [path addLineToPoint:CGPointMake(100,100)];
-//    frameAnimation.path=path.CGPath;
-    
-    
-    CAAnimationGroup *aniGroup = [CAAnimationGroup animation];
-    aniGroup.duration = 2.f;
-    aniGroup.repeatCount = 1;
-    aniGroup.autoreverses=YES;  //动画 复原
-    aniGroup.delegate=self;
-    aniGroup.animations = [NSArray arrayWithObjects:animateScale,animateMove,animateAlpha, nil];
-    aniGroup.removedOnCompletion = YES;
-    
-    [self.view.layer addAnimation:aniGroup forKey:nil];
-    
-    for (NSInteger i=0; i<10; i++) {
-        if (i==5) {
-            break;
-        }
-    }
+//    [self.barChart setXLabels:@[@"Jan 1",@"Jan 2",@"Jan 3",@"Jan 4",@"Jan 5",@"Jan 6",@"Jan 7"]];
+//    [self.barChart updateChartData:@[@(arc4random() % 30),@(arc4random() % 30),@(arc4random() % 30),@(arc4random() % 30),@(arc4random() % 30),@(arc4random() % 30),@(arc4random() % 30)]];
+//    
+//    CABasicAnimation *animateScale = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+//    animateScale.fromValue = [NSNumber numberWithFloat:1.f];
+//    animateScale.toValue = [NSNumber numberWithFloat:0.0f];
+//    
+//    CABasicAnimation *animateMove = [CABasicAnimation animationWithKeyPath:@"position"];
+////    animateMove.fromValue = [NSValue valueWithCGPoint:CGPointMake(self.view.bounds.size.width/2, self.view.bounds.size.height/2)];
+////    animateMove.toValue = [NSValue valueWithCGPoint:CGPointMake(0, 0)];
+//    
+//    CABasicAnimation *animateAlpha = [CABasicAnimation animationWithKeyPath:@"opacity"];
+//    animateAlpha.fromValue = [NSNumber numberWithFloat:1.f];
+//    animateAlpha.toValue = [NSNumber numberWithFloat:0.0f];
+//    
+////    CAKeyframeAnimation *frameAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+////    UIBezierPath *path=[UIBezierPath bezierPath];
+////    [path moveToPoint:CGPointMake(0, 0)];
+////    [path addLineToPoint:CGPointMake(10 ,10)];
+////    [path addLineToPoint:CGPointMake(100,100)];
+////    frameAnimation.path=path.CGPath;
+//    
+//    
+//    CAAnimationGroup *aniGroup = [CAAnimationGroup animation];
+//    aniGroup.duration = 2.f;
+//    aniGroup.repeatCount = 1;
+//    aniGroup.autoreverses=YES;  //动画 复原
+//    aniGroup.delegate=self;
+//    aniGroup.animations = [NSArray arrayWithObjects:animateScale,animateMove,animateAlpha, nil];
+//    aniGroup.removedOnCompletion = YES;
+//    
+//    [self.view.layer addAnimation:aniGroup forKey:nil];
+//    
+//    for (NSInteger i=0; i<10; i++) {
+//        if (i==5) {
+//            break;
+//        }
+//    }
 
 
 
