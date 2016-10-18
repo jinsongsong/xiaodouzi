@@ -128,7 +128,7 @@
 }
 
 -(void)fa:(UIButton*)btn{
-    
+    //你好
     [self makeScale:btn delegate:nil scale:1.5 duration:.3];
     
 //    [self.barChart setXLabels:@[@"Jan 1",@"Jan 2",@"Jan 3",@"Jan 4",@"Jan 5",@"Jan 6",@"Jan 7"]];
