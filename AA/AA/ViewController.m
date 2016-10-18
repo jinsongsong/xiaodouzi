@@ -124,6 +124,8 @@
     animation.duration = duration;
     animation.delegate = delegate;
     animation.repeatCount=3;
+    
+    //jjjjjjjj
     [scaleView.layer addAnimation:animation forKey:@"ShakedAnimation"];
 }
 
