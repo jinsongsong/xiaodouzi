@@ -52,7 +52,7 @@
 
     [progressline moveToPoint:CGPointMake(self.frame.size.width / 2.0, self.frame.size.height)];
     [progressline addLineToPoint:CGPointMake(self.frame.size.width / 2.0, startPosY)];
-
+    
     [progressline setLineWidth:1.0];
     [progressline setLineCapStyle:kCGLineCapSquare];
     [self addAnimationIfNeededWithProgressLine:progressline];
@@ -179,29 +179,47 @@
 
 -(void)setGradeFrame:(CGFloat)grade startPosY:(CGFloat)startPosY
 {
-    CGFloat textheigt = self.bounds.size.height*self.grade;
-  
-    CGFloat topSpace = self.bounds.size.height * (1-self.grade);
+//    CGFloat textheigt = self.bounds.size.height*self.grade;
+//  
+//    CGFloat topSpace =self.bounds.size.height * (1-self.grade);
+//    CGFloat textWidth = self.bounds.size.width;
+//    
+//    [_chartLine addSublayer:self.textLayer];
+//    [self.textLayer setFontSize:15.0];
+//  
+//    [self.textLayer setString:[[NSString alloc]initWithFormat:@"%0.f",grade*self.maxDivisor]];
+//  
+//    CGSize size = CGSizeMake(320,2000); //设置一个行高上限
+//    NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:15.0]};
+//    size = [self.textLayer.string boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil].size;
+//    float verticalY ;
+//  
+//    if (size.height>=textheigt) {
+//      
+//      verticalY = topSpace - size.height;
+//    } else {
+//      verticalY = topSpace +  (textheigt-size.height)/2.0;
+//    }
+//  
+//    [self.textLayer setFrame:CGRectMake((textWidth-size.width)/2.0,verticalY, size.width,size.height)];
+//    //NSLog(@"%@---%f",self.textLayer.frame,self.grade);
+//    self.textLayer.contentsScale = [UIScreen mainScreen].scale;
+    
+    
+    CGFloat topSpace =self.bounds.size.height*(1-self.grade);
     CGFloat textWidth = self.bounds.size.width;
-  
+    
     [_chartLine addSublayer:self.textLayer];
-    [self.textLayer setFontSize:18.0];
-  
+    [self.textLayer setFontSize:15.0];
+    
     [self.textLayer setString:[[NSString alloc]initWithFormat:@"%0.f",grade*self.maxDivisor]];
-  
-    CGSize size = CGSizeMake(320,2000); //设置一个行高上限
-    NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:18.0]};
+    
+    CGSize size = CGSizeMake(textWidth,2000); //设置一个行高上限
+    NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:15.0]};
     size = [self.textLayer.string boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil].size;
-    float verticalY ;
-  
-    if (size.height>=textheigt) {
-      
-      verticalY = topSpace - size.height;
-    } else {
-      verticalY = topSpace +  (textheigt-size.height)/2.0;
-    }
-  
-    [self.textLayer setFrame:CGRectMake((textWidth-size.width)/2.0,verticalY, size.width,size.height)];
+
+    [self.textLayer setFrame:CGRectMake(0,topSpace-size.height, textWidth,size.height)];
+    
     self.textLayer.contentsScale = [UIScreen mainScreen].scale;
 
 }

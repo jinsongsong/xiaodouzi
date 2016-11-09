@@ -21,6 +21,7 @@
 {
     NSArray *data01Array;
     PNLineChart * lineChart;
+    CAShapeLayer *_circleBackground;
 }
 @end
 
@@ -67,7 +68,7 @@
 //    
 //    method_exchangeImplementations(m1, m2);
     
-    
+    [self drawYuan];
     
     
 }
@@ -77,6 +78,28 @@
 -(void)bbb{
     NSLog(@"abcdefg");
     [self bbb];
+}
+-(void)drawYuan{
+    
+    UIBezierPath *circlePath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(self.view.frame.size.width/2.0f, self.view.frame.size.height*3/4.0f)
+                                                              radius:(self.view.frame.size.height * 0.15)
+                                                          startAngle:DEGREES_TO_RADIANS(-90)
+                                                            endAngle:DEGREES_TO_RADIANS(270)
+                                                           clockwise:YES];
+    
+    _circleBackground             = [CAShapeLayer layer];
+    _circleBackground.path        = circlePath.CGPath;
+    _circleBackground.lineCap     = kCALineCapSquare;
+    _circleBackground.fillColor   = [UIColor yellowColor].CGColor;
+    _circleBackground.lineWidth   = 5.0;
+    _circleBackground.strokeColor = [UIColor redColor].CGColor;
+    _circleBackground.strokeEnd   = 1.0;
+    //在俯视图上的层次位置 layer 属性
+    _circleBackground.zPosition   = -1;
+    
+    //[self.view.layer addSublayer:_circle];
+    [self.view.layer addSublayer:_circleBackground];
+
 }
 -(void)aBarChart
 {
@@ -105,6 +128,7 @@
     [barChart strokeChart];
     
 }
+//点击方法效果
 -(void)makeScale:(UIView*)scaleView delegate:(id)delegate scale:(CGFloat)scale duration:(CFTimeInterval)duration
 {
     
@@ -335,6 +359,7 @@
     pieChart.showAbsoluteValues = NO;
     pieChart.showOnlyValues = NO;
     pieChart.delegate=self;
+    pieChart.isShowHollow=YES;
     //绘制
     [pieChart strokeChart];
     

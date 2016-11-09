@@ -85,6 +85,7 @@
 		F33BFD901DA8EA7E0075CB51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3078DAA1D59B12200C8137E /* Assets.xcassets */; };
 		F33BFD911DA8EA7E0075CB51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3078DA71D59B12200C8137E /* Main.storyboard */; };
 		F3BF39711D5AAF7100AB2FC8 /* JSCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = F3BF39701D5AAF7100AB2FC8 /* JSCalendar.m */; };
+		F3DD00551DD2CB5200CD1200 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F3DD00571DD2CB5200CD1200 /* InfoPlist.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -168,6 +169,11 @@
 		F33BFD981DA8EA7E0075CB51 /* CC-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CC-Info.plist"; path = "/Users/ykj3/Desktop/xiaodouzi/AA/CC-Info.plist"; sourceTree = "<absolute>"; };
 		F3BF396F1D5AAF7100AB2FC8 /* JSCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCalendar.h; sourceTree = "<group>"; };
 		F3BF39701D5AAF7100AB2FC8 /* JSCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCalendar.m; sourceTree = "<group>"; };
+		F3DD00511DD2C2B700CD1200 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
+		F3DD00521DD2C2B700CD1200 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		F3DD00561DD2CB5200CD1200 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F3DD00581DD2CB5400CD1200 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F3DD00591DD2CB5600CD1200 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,6 +278,7 @@
 				F3BF39701D5AAF7100AB2FC8 /* JSCalendar.m */,
 				F33BFD701DA8E8EA0075CB51 /* Aeee.h */,
 				F33BFD711DA8E8EA0075CB51 /* Aeee.m */,
+				F3DD00571DD2CB5200CD1200 /* InfoPlist.strings */,
 			);
 			path = AA;
 			sourceTree = "<group>";
@@ -488,6 +495,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3078DAE1D59B12200C8137E /* LaunchScreen.storyboard in Resources */,
+				F3DD00551DD2CB5200CD1200 /* InfoPlist.strings in Resources */,
 				F3078DAB1D59B12200C8137E /* Assets.xcassets in Resources */,
 				F3078DA91D59B12200C8137E /* Main.storyboard in Resources */,
 			);
@@ -700,6 +708,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F3078DA81D59B12200C8137E /* Base */,
+				F3DD00511DD2C2B700CD1200 /* ja */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -708,8 +717,19 @@
 			isa = PBXVariantGroup;
 			children = (
 				F3078DAD1D59B12200C8137E /* Base */,
+				F3DD00521DD2C2B700CD1200 /* ja */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		F3DD00571DD2CB5200CD1200 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F3DD00561DD2CB5200CD1200 /* ja */,
+				F3DD00581DD2CB5400CD1200 /* en */,
+				F3DD00591DD2CB5600CD1200 /* Base */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -719,6 +739,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -764,6 +785,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";

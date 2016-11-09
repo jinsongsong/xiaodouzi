@@ -7,8 +7,11 @@
 //
 
 #import "AppDelegate.h"
+#import <CoreLocation/CoreLocation.h>
 
-@interface AppDelegate ()
+@interface AppDelegate ()<CLLocationManagerDelegate>
+
+@property (nonatomic,strong) CLLocationManager *manager;
 
 @end
 
@@ -17,6 +20,17 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    // 实例化对象
+    _manager = [[CLLocationManager alloc] init];
+    
+    _manager.delegate = self;
+    
+    // 请求授权，记得修改的infoplist，NSLocationAlwaysUsageDescription（描述）
+    [_manager requestAlwaysAuthorization];
+    
+    
+    
     return YES;
 }
 
@@ -41,5 +55,84 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+#pragma mark - 代理方法，当授权改变时调用
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+    
+    
+    // 获取授权后，通过
+    if (status == kCLAuthorizationStatusAuthorizedAlways) {
+        
+        //开始定位(具体位置要通过代理获得)
+        [_manager startUpdatingLocation];
+        
+        //设置精确度
+        _manager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
+        
+        //设置过滤距离
+        _manager.distanceFilter = 1000;
+        
+        //开始定位方向
+        [_manager startUpdatingHeading];
+    }
+    
+    
+}
 
+#pragma mark - 方向
+- (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading {
+    
+    //输出方向
+    
+    //地理方向
+    NSLog(@"true = %f ",newHeading.trueHeading);
+    
+    // 磁极方向
+    NSLog(@"mag = %f",newHeading.magneticHeading);
+    
+}
+
+#pragma mark - 定位代理
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    
+    //    NSLog(@"%@",locations);
+    
+    //获取当前位置
+    CLLocation *location = manager.location;
+    //获取坐标
+    CLLocationCoordinate2D corrdinate = location.coordinate;
+    
+    //打印地址
+    NSLog(@"latitude = %f longtude = %f",corrdinate.latitude,corrdinate.longitude);
+    
+    // 地址的编码通过经纬度得到具体的地址
+    CLGeocoder *gecoder = [[CLGeocoder alloc] init];
+    
+    [gecoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+        
+        CLPlacemark *placemark = [placemarks firstObject];
+        
+        //打印地址
+        NSLog(@"%@",placemark.name);
+    }];
+    
+    // 通过具体地址去获得经纬度
+    CLGeocoder *coder = [[CLGeocoder alloc] init];
+    
+    [coder geocodeAddressString:@"天河城" completionHandler:^(NSArray *placemarks, NSError *error) {
+        
+        
+        
+        NSLog(@"_________________________反编码");
+        
+        CLPlacemark *placeMark = [placemarks firstObject];
+        
+        
+        NSLog(@"%@ lati = %f long = %f",placeMark.name,placeMark.location.coordinate.latitude,placeMark.location.coordinate.longitude);
+        
+    }];
+    
+    //停止定位
+    [_manager stopUpdatingLocation];
+    
+}
 @end

@@ -44,6 +44,8 @@
 /** Default YES. */
 @property (nonatomic) BOOL shouldHighlightSectorOnTouch;
 
+@property (nonatomic) BOOL isShowHollow;
+
 /** Current outer radius. Override recompute() to change this. **/
 @property (nonatomic) CGFloat outerCircleRadius;
 
