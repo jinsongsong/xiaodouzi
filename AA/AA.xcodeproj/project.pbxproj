@@ -86,6 +86,11 @@
 		F33BFD911DA8EA7E0075CB51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3078DA71D59B12200C8137E /* Main.storyboard */; };
 		F3BF39711D5AAF7100AB2FC8 /* JSCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = F3BF39701D5AAF7100AB2FC8 /* JSCalendar.m */; };
 		F3DD00551DD2CB5200CD1200 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F3DD00571DD2CB5200CD1200 /* InfoPlist.strings */; };
+		F3DD005F1DD2FBEE00CD1200 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F3DD00611DD2FBEF00CD1200 /* Localizable.strings */; };
+		F3DD00651DD3004D00CD1200 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F3DD00611DD2FBEF00CD1200 /* Localizable.strings */; };
+		F3DD00661DD3004E00CD1200 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F3DD00611DD2FBEF00CD1200 /* Localizable.strings */; };
+		F3DD00671DD3004E00CD1200 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F3DD00611DD2FBEF00CD1200 /* Localizable.strings */; };
+		F3DD00681DD3004F00CD1200 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F3DD00611DD2FBEF00CD1200 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -174,6 +179,13 @@
 		F3DD00561DD2CB5200CD1200 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F3DD00581DD2CB5400CD1200 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F3DD00591DD2CB5600CD1200 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F3DD005A1DD2F78E00CD1200 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
+		F3DD005B1DD2F78E00CD1200 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		F3DD005C1DD2F78E00CD1200 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		F3DD00601DD2FBEF00CD1200 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F3DD00621DD2FBF000CD1200 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; lineEnding = 0; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F3DD00631DD2FBF100CD1200 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F3DD00641DD2FBF200CD1200 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -287,6 +299,7 @@
 			isa = PBXGroup;
 			children = (
 				F3078D9F1D59B12200C8137E /* main.m */,
+				F3DD00611DD2FBEF00CD1200 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -474,6 +487,8 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hant",
+				ja,
 			);
 			mainGroup = F3078D921D59B12200C8137E;
 			productRefGroup = F3078D9C1D59B12200C8137E /* Products */;
@@ -494,6 +509,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3DD005F1DD2FBEE00CD1200 /* Localizable.strings in Resources */,
 				F3078DAE1D59B12200C8137E /* LaunchScreen.storyboard in Resources */,
 				F3DD00551DD2CB5200CD1200 /* InfoPlist.strings in Resources */,
 				F3078DAB1D59B12200C8137E /* Assets.xcassets in Resources */,
@@ -505,6 +521,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3DD00651DD3004D00CD1200 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -512,6 +529,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3DD00661DD3004E00CD1200 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -520,6 +538,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F33BFD661DA8E8410075CB51 /* LaunchScreen.storyboard in Resources */,
+				F3DD00671DD3004E00CD1200 /* Localizable.strings in Resources */,
 				F33BFD671DA8E8410075CB51 /* Assets.xcassets in Resources */,
 				F33BFD681DA8E8410075CB51 /* Main.storyboard in Resources */,
 			);
@@ -530,6 +549,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F33BFD8F1DA8EA7E0075CB51 /* LaunchScreen.storyboard in Resources */,
+				F3DD00681DD3004F00CD1200 /* Localizable.strings in Resources */,
 				F33BFD901DA8EA7E0075CB51 /* Assets.xcassets in Resources */,
 				F33BFD911DA8EA7E0075CB51 /* Main.storyboard in Resources */,
 			);
@@ -709,6 +729,7 @@
 			children = (
 				F3078DA81D59B12200C8137E /* Base */,
 				F3DD00511DD2C2B700CD1200 /* ja */,
+				F3DD005A1DD2F78E00CD1200 /* zh-Hant */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -718,6 +739,7 @@
 			children = (
 				F3078DAD1D59B12200C8137E /* Base */,
 				F3DD00521DD2C2B700CD1200 /* ja */,
+				F3DD005B1DD2F78E00CD1200 /* zh-Hant */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -728,8 +750,20 @@
 				F3DD00561DD2CB5200CD1200 /* ja */,
 				F3DD00581DD2CB5400CD1200 /* en */,
 				F3DD00591DD2CB5600CD1200 /* Base */,
+				F3DD005C1DD2F78E00CD1200 /* zh-Hant */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F3DD00611DD2FBEF00CD1200 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F3DD00601DD2FBEF00CD1200 /* Base */,
+				F3DD00621DD2FBF000CD1200 /* en */,
+				F3DD00631DD2FBF100CD1200 /* ja */,
+				F3DD00641DD2FBF200CD1200 /* zh-Hant */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

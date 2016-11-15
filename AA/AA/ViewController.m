@@ -9,7 +9,7 @@
 #import "ViewController.h"
 //#define ARC4RANDOM_MAX 0x100000000
 #import <objc/runtime.h>
-
+#import <YYKit/YYKit.h>
 #if KKAA
 #import "MBProgressHUD.h"
 #import "AFNetworking.h"
@@ -59,9 +59,9 @@
     
     UIButton *btn=[[UIButton alloc]initWithFrame:CGRectMake(100, 100, 100, 100)];
     btn.backgroundColor=[UIColor orangeColor];
+    [btn setTitle:NSLocalizedString(@"App", nil) forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(fa:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
-    
     
 //    Method m1=class_getInstanceMethod([self class], @selector(viewDidLoad));
 //    Method m2=class_getInstanceMethod([self class], @selector(bbb));
@@ -150,12 +150,68 @@
     animation.repeatCount=3;
     [scaleView.layer addAnimation:animation forKey:@"ShakedAnimation"];
 }
+- (CAAnimation *)animationRotate
 
+{
+    
+    //    UIButton *theButton = sender;
+    
+    // rotate animation
+    
+    CATransform3D rotationTransform  = CATransform3DMakeRotation(M_PI, 0.5, -0.5,0.5);
+    
+    
+    
+    CABasicAnimation* animation;
+    
+    animation = [CABasicAnimation animationWithKeyPath:@"transform"];
+    
+    animation.toValue        = [NSValue valueWithCATransform3D:rotationTransform];
+    
+    animation.duration        = 0.3;
+    
+    animation.autoreverses    = YES;
+    
+    animation.cumulative    = YES;
+    
+    animation.repeatCount    = 1;
+    
+    animation.beginTime        = 0.1;
+    
+    animation.delegate        = self;
+    
+    
+    
+    return animation;
+    
+}
 -(void)fa:(UIButton*)btn{
     //你好
     [self makeScale:btn delegate:nil scale:1.5 duration:.3];
     
-//    [self.barChart setXLabels:@[@"Jan 1",@"Jan 2",@"Jan 3",@"Jan 4",@"Jan 5",@"Jan 6",@"Jan 7"]];
+    UIButton *theButton = btn;
+    
+    CAAnimation* myAnimationRotate = [self animationRotate];
+
+    CAAnimationGroup *m_pGroupAnimation     = [CAAnimationGroup animation];
+    
+    m_pGroupAnimation.delegate              =self;
+    
+    m_pGroupAnimation.removedOnCompletion   =NO;
+    
+    m_pGroupAnimation.duration              =1;
+    
+    m_pGroupAnimation.timingFunction        = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    
+    m_pGroupAnimation.repeatCount           =1;//FLT_MAX;  //"forever";
+    
+    m_pGroupAnimation.fillMode              =kCAFillModeForwards;
+    
+    m_pGroupAnimation.animations             = [NSArray arrayWithObjects:myAnimationRotate,nil];
+    
+    [theButton.layer addAnimation:m_pGroupAnimation forKey:@"animationRotate"];
+    
+    //    [self.barChart setXLabels:@[@"Jan 1",@"Jan 2",@"Jan 3",@"Jan 4",@"Jan 5",@"Jan 6",@"Jan 7"]];
 //    [self.barChart updateChartData:@[@(arc4random() % 30),@(arc4random() % 30),@(arc4random() % 30),@(arc4random() % 30),@(arc4random() % 30),@(arc4random() % 30),@(arc4random() % 30)]];
 //    
 //    CABasicAnimation *animateScale = [CABasicAnimation animationWithKeyPath:@"transform.scale"];

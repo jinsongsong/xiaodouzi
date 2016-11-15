@@ -5,3 +5,12 @@
   Created by YKJ3 on 16/11/9.
   Copyright © 2016年 YKJ3. All rights reserved.
 */
+CFBundleDisplayName="在该语言下需要显示的名称";
+"Availability"          = "Availability";
+"Approx"                = "*Approx:";
+"ASUO"                  = "Apt/Suit/Unit(Optional)";
+"ACEHBST"               = "A confirmation email has been sent to";
+"AboutUs"               = "About us";
+"AddressLine1"          = "Address Line 1:";
+"AddressLine2"          = "Address Line 2:";
+"AYSYWTRTPFYP"          = "Are you sure you want to remove this product from your profile?";
