@@ -63,6 +63,50 @@
     [btn addTarget:self action:@selector(fa:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
     
+    btn.layer.shadowColor=[[UIColor redColor]CGColor];
+    btn.layer.shadowOffset=CGSizeMake(0, 0); //阴影偏移量 默认（0，-3）
+    btn.layer.shadowOpacity = 1;
+    btn.layer.shadowRadius = 3;
+    
+    
+//==============================================================================
+// 二次元画阴影一空间自身为坐标系
+//==============================================================================
+    UIBezierPath *path=[UIBezierPath bezierPath];
+    [path moveToPoint:CGPointMake(0, 0)];
+    [path addQuadCurveToPoint:CGPointMake(0, CGRectGetHeight(btn.frame)) controlPoint:CGPointMake(-4, CGRectGetHeight(btn.frame)/2)];
+    btn.layer.shadowPath=path.CGPath;
+    
+    
+    
+    
+//==============================================================================
+// 二次元曲线moveToPoint起点 CurveToPoint终点 controlPoint中间点曲线凸起
+//==============================================================================
+    CAShapeLayer *layer=[CAShapeLayer layer];
+    UIColor *color = [UIColor redColor];
+    [color set]; //设置线条颜色
+    
+    UIBezierPath* aPath = [UIBezierPath bezierPath];
+    aPath.lineWidth = 5.0;
+    aPath.lineCapStyle = kCGLineCapRound; //线条拐角
+    aPath.lineJoinStyle = kCGLineCapRound; //终点处理
+    
+    [aPath moveToPoint:CGPointMake(20, 100)];
+    [aPath addQuadCurveToPoint:CGPointMake(150, 100) controlPoint:CGPointMake(70, 0)];
+    [aPath stroke];
+    
+    //CAShapeLayer设置填充颜色以CAShapeLayer 为主 未设置默认UIBezierPath的黑色
+    layer.fillColor   = [UIColor blueColor].CGColor;
+    layer.lineWidth   = 5.0;
+    layer.strokeColor = [UIColor redColor].CGColor;
+    layer.strokeEnd   = 1.0;
+    layer.path=aPath.CGPath;
+    [self.view.layer addSublayer:layer];
+//==============================================================================
+    
+    
+    
 //    Method m1=class_getInstanceMethod([self class], @selector(viewDidLoad));
 //    Method m2=class_getInstanceMethod([self class], @selector(bbb));
 //    
