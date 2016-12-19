@@ -70,7 +70,7 @@
     
     
 //==============================================================================
-// 二次元画阴影一空间自身为坐标系
+// 二次元画阴影以控件自身为坐标系
 //==============================================================================
     UIBezierPath *path=[UIBezierPath bezierPath];
     [path moveToPoint:CGPointMake(0, 0)];
@@ -122,6 +122,24 @@
 -(void)bbb{
     NSLog(@"abcdefg");
     [self bbb];
+    
+    UIButton *btn=[[UIButton alloc]initWithFrame:CGRectMake(50, 300, 50, 50)];
+    btn.backgroundColor=[UIColor orangeColor];
+    [btn setTitle:NSLocalizedString(@"App", nil) forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(initCustomAniamte:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
+    
+    
+}
+-(void)initCustomAniamte:(UIButton*)btn{
+    
+    [UIView animateWithDuration:3 animations:^{
+        btn.frame=CGRectMake(arc4random()%325, arc4random()%600, 50, 50);
+        btn.backgroundColor=[UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:1];
+    } completion:^(BOOL finished) {
+        [self initCustomAniamte:btn];
+    }];
+
 }
 -(void)drawYuan{
     
