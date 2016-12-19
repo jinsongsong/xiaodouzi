@@ -16,13 +16,18 @@
 #import "UIImageView+WebCache.h"
 #endif
 
-#define HHAA 5
-@interface ViewController ()<PNChartDelegate,CAAnimationDelegate>
+#define HHAA
+@interface ViewController ()<PNChartDelegate,CAAnimationDelegate,UIGestureRecognizerDelegate>
 {
     NSArray *data01Array;
     PNLineChart * lineChart;
     CAShapeLayer *_circleBackground;
+    
+    UIButton *_btn;
+    
 }
+@property(nonatomic,strong)CADisplayLink *displayLink;
+@property(nonatomic,strong)UIButton *mgbtn;
 @end
 
 @implementation ViewController
@@ -123,23 +128,68 @@
     NSLog(@"abcdefg");
     [self bbb];
     
-    UIButton *btn=[[UIButton alloc]initWithFrame:CGRectMake(50, 300, 50, 50)];
-    btn.backgroundColor=[UIColor orangeColor];
-    [btn setTitle:NSLocalizedString(@"App", nil) forState:UIControlStateNormal];
-    [btn addTarget:self action:@selector(initCustomAniamte:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:btn];
+    //每秒60次 
+    self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(watchMyViewAction)];
+    [self.displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+
+    self.mgbtn=[[UIButton alloc]initWithFrame:CGRectMake(50, 300, 50, 50)];
+    _mgbtn.backgroundColor=[UIColor orangeColor];
+    //[_mgbtn setTitle:NSLocalizedString(@"App", nil) forState:UIControlStateNormal];
+    [_mgbtn addTarget:self action:@selector(nihao) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_mgbtn];
     
+    _btn=[[UIButton alloc]initWithFrame:CGRectMake(50, 300, 50, 50)];
+    _btn.backgroundColor=[UIColor orangeColor];
+    _btn.userInteractionEnabled=YES;
+    [_btn setTitle:NSLocalizedString(@"App", nil) forState:UIControlStateNormal];
+    [_btn addTarget:self action:@selector(initCustomAniamte:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_btn];
     
 }
--(void)initCustomAniamte:(UIButton*)btn{
+-(void)nihao{
+    NSLog(@"你好");
+
+}
+-(void)watchMyViewAction{
+    CALayer *presentationLayer = _btn.layer.presentationLayer;
+    _mgbtn.frame=presentationLayer.frame;
+}
+-(void)stopWatch{
+    [self.displayLink invalidate];
+    self.displayLink=nil;
     
-    [UIView animateWithDuration:3 animations:^{
+}
+-(void)initCustomAniamte:(UIButton*)btn{ //循环动画
+    
+//    [UIView animateWithDuration:3 animations:^{
+//        btn.frame=CGRectMake(arc4random()%325, arc4random()%600, 50, 50);
+//        btn.backgroundColor=[UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:1];
+//    } completion:^(BOOL finished) {
+//        [self initCustomAniamte:btn];
+//    }];
+    NSLog(@"点击动画");
+    
+    
+    [UIView animateWithDuration:3 delay:.5 options:UIViewAnimationOptionCurveEaseInOut|UIViewAnimationOptionAllowUserInteraction animations:^{
         btn.frame=CGRectMake(arc4random()%325, arc4random()%600, 50, 50);
         btn.backgroundColor=[UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:1];
+        
     } completion:^(BOOL finished) {
-        [self initCustomAniamte:btn];
+        if (finished) {
+            [self initCustomAniamte:btn];
+        }
     }];
+}
+//动画过程响应事件  判断点击区域
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    UITouch *touch = [touches anyObject];
 
+    if (CGRectContainsPoint(_btn.layer.presentationLayer.frame, [touch locationInView:self.view])) {
+        NSLog(@"111---点击动画");
+        //do something
+        NSLog(@"%@",NSStringFromCGRect(_btn.layer.presentationLayer.frame));
+        
+    }
 }
 -(void)drawYuan{
     
@@ -206,27 +256,21 @@
                             [NSValue valueWithCATransform3D:tr2],
                             nil];
     [animation setValues:frameValues];
-    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     animation.duration = duration;
     animation.delegate = delegate;
     animation.repeatCount=3;
     [scaleView.layer addAnimation:animation forKey:@"ShakedAnimation"];
 }
-- (CAAnimation *)animationRotate
-
-{
-    
-    //    UIButton *theButton = sender;
-    
-    // rotate animation
+- (CAAnimation *)animationRotate{
     
     CATransform3D rotationTransform  = CATransform3DMakeRotation(M_PI, 0.5, -0.5,0.5);
-    
-    
     
     CABasicAnimation* animation;
     
     animation = [CABasicAnimation animationWithKeyPath:@"transform"];
+    
+    //animation.fromValue      = [NSValue valueWithCATransform3D:CATransform3DMakeRotation(M_PI/2, 0.8, -0.5,0.8)];
     
     animation.toValue        = [NSValue valueWithCATransform3D:rotationTransform];
     
@@ -242,19 +286,18 @@
     
     animation.delegate        = self;
     
-    
-    
     return animation;
     
 }
 -(void)fa:(UIButton*)btn{
-    //你好
+    
+    [_btn.layer removeAllAnimations]; //移除动画 使BOOL finished 变NUll
+    //放大动画
     [self makeScale:btn delegate:nil scale:1.5 duration:.3];
     
-    UIButton *theButton = btn;
     
-    CAAnimation* myAnimationRotate = [self animationRotate];
-
+    /*CAAnimation* myAnimationRotate = [self animationRotate];
+    
     CAAnimationGroup *m_pGroupAnimation     = [CAAnimationGroup animation];
     
     m_pGroupAnimation.delegate              =self;
@@ -271,7 +314,7 @@
     
     m_pGroupAnimation.animations             = [NSArray arrayWithObjects:myAnimationRotate,nil];
     
-    [theButton.layer addAnimation:m_pGroupAnimation forKey:@"animationRotate"];
+    [btn.layer addAnimation:m_pGroupAnimation forKey:@"animationRotate"];*/
     
     //    [self.barChart setXLabels:@[@"Jan 1",@"Jan 2",@"Jan 3",@"Jan 4",@"Jan 5",@"Jan 6",@"Jan 7"]];
 //    [self.barChart updateChartData:@[@(arc4random() % 30),@(arc4random() % 30),@(arc4random() % 30),@(arc4random() % 30),@(arc4random() % 30),@(arc4random() % 30),@(arc4random() % 30)]];
