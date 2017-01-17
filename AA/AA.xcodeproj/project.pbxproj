@@ -84,6 +84,7 @@
 		F33BFD8F1DA8EA7E0075CB51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3078DAC1D59B12200C8137E /* LaunchScreen.storyboard */; };
 		F33BFD901DA8EA7E0075CB51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3078DAA1D59B12200C8137E /* Assets.xcassets */; };
 		F33BFD911DA8EA7E0075CB51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3078DA71D59B12200C8137E /* Main.storyboard */; };
+		F37F10EB1E1B7A97009231C4 /* UIImageView+DrawImage.m in Sources */ = {isa = PBXBuildFile; fileRef = F37F10EA1E1B7A97009231C4 /* UIImageView+DrawImage.m */; };
 		F3BF39711D5AAF7100AB2FC8 /* JSCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = F3BF39701D5AAF7100AB2FC8 /* JSCalendar.m */; };
 		F3DD00551DD2CB5200CD1200 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F3DD00571DD2CB5200CD1200 /* InfoPlist.strings */; };
 		F3DD005F1DD2FBEE00CD1200 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F3DD00611DD2FBEF00CD1200 /* Localizable.strings */; };
@@ -172,6 +173,8 @@
 		F33BFD711DA8E8EA0075CB51 /* Aeee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Aeee.m; sourceTree = "<group>"; };
 		F33BFD971DA8EA7E0075CB51 /* CC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F33BFD981DA8EA7E0075CB51 /* CC-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CC-Info.plist"; path = "/Users/ykj3/Desktop/xiaodouzi/AA/CC-Info.plist"; sourceTree = "<absolute>"; };
+		F37F10E91E1B7A97009231C4 /* UIImageView+DrawImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+DrawImage.h"; sourceTree = "<group>"; };
+		F37F10EA1E1B7A97009231C4 /* UIImageView+DrawImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+DrawImage.m"; sourceTree = "<group>"; };
 		F3BF396F1D5AAF7100AB2FC8 /* JSCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCalendar.h; sourceTree = "<group>"; };
 		F3BF39701D5AAF7100AB2FC8 /* JSCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCalendar.m; sourceTree = "<group>"; };
 		F3DD00511DD2C2B700CD1200 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
@@ -291,6 +294,8 @@
 				F33BFD701DA8E8EA0075CB51 /* Aeee.h */,
 				F33BFD711DA8E8EA0075CB51 /* Aeee.m */,
 				F3DD00571DD2CB5200CD1200 /* InfoPlist.strings */,
+				F37F10E91E1B7A97009231C4 /* UIImageView+DrawImage.h */,
+				F37F10EA1E1B7A97009231C4 /* UIImageView+DrawImage.m */,
 			);
 			path = AA;
 			sourceTree = "<group>";
@@ -630,6 +635,7 @@
 				F3078DF71D59B17000C8137E /* PNCircleChart.m in Sources */,
 				F3078E061D59BCD700C8137E /* UICountingLabel.m in Sources */,
 				F3078DFD1D59B17000C8137E /* PNPieChart.m in Sources */,
+				F37F10EB1E1B7A97009231C4 /* UIImageView+DrawImage.m in Sources */,
 				F3078DF91D59B17000C8137E /* PNGenericChart.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
